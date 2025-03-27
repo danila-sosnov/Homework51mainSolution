@@ -18,21 +18,17 @@ int get_max_digit(int n)
 	return max;
 }
 
-int get_max_digit_recursia(int n, int max = 0)
+int get_max_digit_recursia(int n)
 {
-	
-	if (n == 0)
+	if (n < 10)
 	{
-		return max;
+		return n;
 	}
 
 	int digit = n % 10;
 
-	if (digit > max)
-	{
-		max = digit;
-	}
+	n = get_max_digit_recursia(n / 10);
 
-	return get_max_digit_recursia(n / 10, max);
+	return digit > n ? digit : n;
 
 }
